@@ -1,12 +1,12 @@
 <?php
 // Aiven MySQL Cloud Credentials
-$host = "mysql-9d9cc53-xxxx.aivencloud.com"; // Aiven का Host/URI नाम
-$port = "25232";                              // Aiven का Service Port
-$username = "avnadmin";                       // Aiven का User
-$password = "your_aiven_password";           // Aiven का Password
-$dbname = "coaching_cms";                     // आपका Database Name
+$host = "mysql-9d9cc53-majdoorsarthi-d1a8.k.aivencloud.com";
+$port = 13848;
+$username = "avnadmin";
+$password = "AVNS_CXh977fYw0GUSdyTCUU";
+$dbname = "coaching_cms";
 
-// SSL Mode enable karke connect karein
+// SSL Mode ke saath connection establish karein
 $conn = mysqli_init();
 mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
 mysqli_real_connect($conn, $host, $username, $password, $dbname, $port, NULL, MYSQLI_CLIENT_SSL);
@@ -18,11 +18,11 @@ if (!$conn) {
     exit;
 }
 
-// SQL Strict Mode aur Primary Key Constraint Override
+// Primary Key requirement aur Strict mode ko disable karein
 mysqli_query($conn, "SET SESSION sql_require_primary_key = 0;");
 mysqli_query($conn, "SET sql_mode=''");
 
-// Character set & Timezone
+// Character encoding aur Timezone
 mysqli_set_charset($conn, "utf8mb4");
 
 if (session_status() === PHP_SESSION_NONE) {
